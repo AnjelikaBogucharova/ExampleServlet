@@ -5,6 +5,7 @@ import com.appline.logic.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,15 +48,14 @@ public class ServletAdd extends HttpServlet {
             BufferedReader reader = request.getReader();
             while((line = reader.readLine()) != null){
                 sb.append(line);
-                System.out.println(line);
             }
         }catch (Exception e){
             System.out.println("Error");
         }
 
-        JsonObject jObj = gson.fromJson(String.valueOf(sb), JsonObject.class);
+        JsonObject jObj = new JsonParser().parse(sb.toString()).getAsJsonObject();
+                //gson.fromJson(String.valueOf(sb), JsonObject.class);
         request.setCharacterEncoding("UTF-8");
-
         String name = jObj.get("name").getAsString();
         String surname = jObj.get("surname").getAsString();
         double salary = jObj.get("salary").getAsDouble();
