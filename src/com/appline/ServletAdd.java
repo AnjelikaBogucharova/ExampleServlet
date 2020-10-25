@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @WebServlet(urlPatterns = "/add")
 public class ServletAdd extends HttpServlet {
-    private AtomicInteger counter = new AtomicInteger(2);
+    private AtomicInteger counter = new AtomicInteger(3);
     Model model = Model.getInstance();
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

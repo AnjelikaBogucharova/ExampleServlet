@@ -16,10 +16,21 @@ public class Model implements Serializable {
         model = new HashMap<>();
 
         model.put(1, new User("Ivan", "Ivanov", 11111));
+        model.put(2, new User("Mikhail", "Mikhaylov", 22222));
     }
 
     public void add(User user, int id){
         model.put(id,user);
+    }
+
+    public void update(User user, int id){
+        model.get(id).setName(user.getName());
+        model.get(id).setSurname(user.getSurname());
+        model.get(id).setSalary(user.getSalary());
+    }
+
+    public void remove(int id){
+        model.remove(id);
     }
 
     public Map<Integer, User> getFromList(){
